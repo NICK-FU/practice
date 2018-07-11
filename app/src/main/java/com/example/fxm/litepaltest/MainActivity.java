@@ -1,5 +1,7 @@
 package com.example.fxm.litepaltest;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -55,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_call:
+                        Intent intent =new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:10086"));
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
                 mDrawerLayout.closeDrawers();
                 return true;
             }
